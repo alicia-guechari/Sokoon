@@ -60,4 +60,14 @@ class JournalEntry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.title} by {self.student.email}"    
+        return f"{self.title} by {self.student.email}"   
+
+# mood suggestion model 
+class EmotionPrompt(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    prompt_text = models.TextField()
+
+    def __str__(self):
+        return self.title
+     

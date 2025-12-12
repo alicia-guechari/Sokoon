@@ -17,3 +17,9 @@ class JournalEntrySerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalEntry
         fields = ['id', 'title', 'content', 'created_at']
+
+
+class EmotionPromptSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmotionPrompt
+        fields = "__all__"

@@ -15,10 +15,14 @@ class DailyPositiveCardListCreateView(generics.ListCreateAPIView):
             return [permissions.IsAdminUser()]
         
 
+
 class DailyPositiveCardRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = DailyPositiveCard.objects.all()
     serializer_class = DailyPositiveCardSerializer
     permission_classes = [permissions.IsAdminUser]
+
+
+
 
 class StudentProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = StudentProfileSerializer
@@ -27,6 +31,8 @@ class StudentProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
     
+
+
 
 class JournalListCreateView(generics.ListCreateAPIView):
     serializer_class = JournalEntrySerializer
@@ -38,10 +44,29 @@ class JournalListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(student=self.request.user)
 
-
 class JournalRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = JournalEntrySerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return JournalEntry.objects.filter(student=self.request.user)
+
+   
+    
+class EmotionPromptListCreateView(generics.ListCreateAPIView):
+    queryset = EmotionPrompt.objects.all()
+    serializer_class = EmotionPromptSerializer
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            return [permissions.IsAdminUser()]  
+        return [permissions.AllowAny()]  
+
+class EmotionPromptDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EmotionPrompt.objects.all()
+    serializer_class = EmotionPromptSerializer
+
+    def get_permissions(self):
+        if self.request.method in ["PUT", "PATCH", "DELETE"]:
+            return [permissions.IsAdminUser()]
+        return [permissions.AllowAny()]      

@@ -20,5 +20,10 @@ urlpatterns = [
     # journal urls :
     path('journal/', JournalListCreateView.as_view(), name='journal-list-create'),
     path('journal/<int:pk>/', JournalRetrieveUpdateDeleteView.as_view(), name='journal-detail'),
+
+    # emotion prompt urls :
+    path("prompts/", EmotionPromptListCreateView.as_view(), name="prompt-list"),
+    path("prompts/<int:pk>/", EmotionPromptDetailView.as_view(), name="prompt-detail"),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
