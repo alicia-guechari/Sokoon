@@ -1,0 +1,51 @@
+.env
+.dzStgVenv
+
+# Django
+*.pot
+uploads/
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+
+# Ignore database files
+db.sqlite3
+*.sqlite3
+*.db
+*.sql
+
+# Ignore static and media files (if not versioned)
+/staticfiles/
+/mediafiles/
+media/
+emails/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore coverage reports
+.coverage
+htmlcov/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore other unnecessary files
+*.bak
+*.tmp
+*.temp
